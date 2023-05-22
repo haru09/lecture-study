@@ -1,15 +1,20 @@
 package com.example.stream;
 
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class StreamTestFirst {
+    static List<Person> persons;
 
-    List<Person> persons;
-
-    List<Person> beforeSet(){
+    @BeforeAll
+    static void beforeSet(){
         persons = new ArrayList<Person>();
 
         persons.add(new Person("Park", 35));
@@ -18,12 +23,11 @@ public class StreamTestFirst {
         persons.add(new Person("Lee", 30));
         persons.add(new Person("Eun", 55));
         persons.add(new Person("Choi", 33));
-
-        return persons;
     }
 
+    @Test
     public void notUserdTest() {
-        System.out.println("==============notUserdTest======");
+        log.info("==============notUserdTest======");
         List<Person> list = new ArrayList<>();
 
         for(Person person : persons){
@@ -45,8 +49,9 @@ public class StreamTestFirst {
         }
     }
 
+    @Test
     public void usedTest() {
-        System.out.println("==============usedTest======");
+        log.info("==============usedTest======");
         List<String> PersonsNames = persons.stream()
                 .filter(Person -> Person.getAge() > 30)
                 .sorted()
@@ -56,13 +61,5 @@ public class StreamTestFirst {
         for(String name : PersonsNames){
             System.out.println(name);
         }
-    }
-
-    public static void main(String[] args){
-        System.out.println("일반적인 리스트 사용과 스트림 사용 테스트");
-        StreamTestFirst first = new StreamTestFirst();
-        first.beforeSet();
-        first.notUserdTest();
-        first.usedTest();
     }
 }
