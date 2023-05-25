@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SteamCodeTest {
@@ -23,7 +24,7 @@ public class SteamCodeTest {
 
     @BeforeEach
     public void setUp(){
-        codeList = new ArrayList<Code>();
+        codeList = new ArrayList<>();
         Code code = new Code();
         code.setCd("10");
         code.setCdNm("축구");
@@ -60,10 +61,40 @@ public class SteamCodeTest {
         code.setDesc("구기종목");
         codeList.add(code);
 
+        code = new Code();
+        code.setCd("60");
+        code.setCdNm("농구");
+        code.setDesc("구기종목");
+        codeList.add(code);
+    }
+
+    public void print(){
+        codeList.forEach(code -> System.out.println(code.getCdNm()));
+        System.out.println("====================================");
     }
 
     @Test
-    public void _축구제외(){
+    public void _removeSoccer(){
+        print();
+
+        codeList.removeIf(code -> code.getCd().equals("10"));
         codeList.forEach(code -> System.out.println(code.getCdNm()));
+        System.out.println("====================================");
+    }
+
+    @Test
+    public void _removeDuplication(){
+        print();
+
+        codeList.stream()
+                .distinct()
+                .forEach(code -> System.out.println(code.getCdNm()))
+        ;
+
+        List<String> list = Arrays.asList("12", "12", "12", "12", "12", "13");
+        list.stream()
+                .distinct()
+                .forEach(System.out::println)
+        ;
     }
 }
