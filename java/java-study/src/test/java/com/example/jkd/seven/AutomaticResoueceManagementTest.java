@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 
 public class AutomaticResoueceManagementTest {
-    final String files = "E:\\\\Study\\\\IntelliJ_Workspace\\\\lecture-study\\\\java\\\\java-study\\\\src\\\\test\\\\java\\\\com\\\\example\\\\jkd\\\\seven\\\\test.txt";
+    final String files = "c:\\\\test.txt";
     @Test
     void beforeClose(){
         FileInputStream fin = null;
