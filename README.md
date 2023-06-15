@@ -15,4 +15,8 @@
 
 
 JDK7 추가 기능
-- Type Interface 다이아몬드(<>지시자 사용)
+# Type Interface 다이아몬드(<>지시자 사용)
+# Switch 문자열 가능
+# Automatic Resource Management (자동 close)
+## DB Connection, File Stream 등을 open 이후 finally에서 개별적으로 close 처리를 해줬어야함.
+## Java7 이 후 AutoClosable, Closeable 인터페이스를 구현한 객체에 대해서 try를 사용하는 경우 자동 close처리.

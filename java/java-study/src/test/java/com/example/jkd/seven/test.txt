@@ -1,0 +1,2 @@
+Java 7 additional features test
+automatic resource management test
